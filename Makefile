@@ -49,6 +49,7 @@ IMG_NAME:=$(PROJECT_NAME)
 else
 IMG_NAME:=$(name)
 endif
+export IMG_NAME
 ################################################################################
 ifeq ($(qcow2),)
 USE_QCOW2:=1
@@ -59,23 +60,27 @@ else
 USE_QCOW2:=$(qcow2)
 endif
 endif
+export USE_QCOW2
 ################################################################################
 ifeq ($(qcow2size),)
 BASE_QCOW2_SIZE:=12G
 else
 BASE_QCOW2_SIZE:=$(qcow2size)
 endif
+export BASE_QCOW2_SIZE
 ################################################################################
 ifeq ($(release),)
 RELEASE:=buster
 else
 RELEASE:=$(release)
 endif
+export RELEASE
 ifneq ($(apt-proxy),true)
 APT_PROXY:=unset
 else
 APT_PROXY:=http://172.17.0.1:3142
 endif
+export APT_PROXY
 ################################################################################
 .PHONY: report
 report:
